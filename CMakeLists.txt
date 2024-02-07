@@ -44,5 +44,5 @@ target_link_libraries(arrow-wrapper Arrow)
 install(TARGETS arrow-wrapper
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
-install(FILES ${AW_PUBLIC_HEADERS}
+install(FILES ${AW_HH} ${AW_PUBLIC_HEADERS}
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
