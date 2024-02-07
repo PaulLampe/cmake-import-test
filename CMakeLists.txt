@@ -35,11 +35,19 @@ add_library(${PROJECT_NAME} STATIC)
 
 target_sources(
   ${PROJECT_NAME}
-  PRIVATE ${AW_CC} ${AW_HH}
-  PUBLIC ${AW_PUBLIC_HEADERS}
+  PRIVATE ${AW_CC}
 )
 
 target_link_libraries(arrow-wrapper Arrow)
+
+target_include_directories(arrow-wrapper
+  PRIVATE
+      # where the library itself will look for its internal headers
+      ${CMAKE_CURRENT_SOURCE_DIR}/src
+  PUBLIC
+      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+      $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 
 install(TARGETS arrow-wrapper
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
