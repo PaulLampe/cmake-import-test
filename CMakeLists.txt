@@ -49,6 +49,13 @@ target_include_directories(arrow-wrapper
       $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
+set(public_headers
+    src/api.h
+)
+
+set_target_properties(arrow-wrapper PROPERTIES PUBLIC_HEADER "${public_headers}")
+
+
 install(TARGETS arrow-wrapper
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
